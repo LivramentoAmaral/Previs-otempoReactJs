@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+// App.jsx
+import React, { useState } from 'react';
 import './App.css';
+import Search from './Components/Search';
+
 
 function App() {
+  const [weatherData, setWeatherData] = useState(null);
+
+  const handleWeatherUpdate = (data) => {
+    setWeatherData(data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <Search onWeatherUpdate={handleWeatherUpdate} />
       </header>
-    </div>
+      <main>
+        <h1>Previsão do tempo...</h1>
+        {weatherData ? (
+          <>
+            <h2 className= 'description'>Local: {weatherData.name}, {weatherData.sys.country}</h2>
+            <h2 className= 'description'> Temperatura: {weatherData.main.temp} °C</h2>
+            <h2 className= 'description'>Condição: {weatherData.weather[0].description}</h2>
+            <img
+              src={`https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weatherData.weather[0].icon}.svg`}
+              alt={weatherData.weather[0].description}
+            />  
+          </>
+        ) : (
+          <>
+            <p>Insira o nome de uma cidade para ver a previsão do tempo acima</p>
+          </>
+        )}
+      </main>
+    </>
   );
 }
 
