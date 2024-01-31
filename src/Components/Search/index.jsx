@@ -28,7 +28,7 @@ function Search({ onWeatherUpdate }) {
         e.preventDefault();
         const currentValue = e.target.searchInput.value;
 
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentValue}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${currentValue}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric&lang=PT_BR`;
 
         fetch(url)
             .then(response => response.json())
