@@ -61,6 +61,7 @@ h1 {
 
 /* Estilos para as informações da previsão do tempo */
 .description {
+  background-color: rgb(197, 194, 194);
   width: 70%;
   color: #3366cc;
   border: solid 1px #3366cc;
